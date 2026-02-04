@@ -9,12 +9,14 @@
 
 const clicker = document.getElementById("clicker");
 clicker.addEventListener("click", function (event) {
-
+    a_click();
+    console.log(score);
 });
 
 const store_options = document.querySelectorAll("#store li");
 store_options.forEach(function (opt) {
     opt.addEventListener("click", function (event) {
-        purchase(opt.id)
+        // purchase(opt.id)
+        inc_c_v(1);
     }
 )});
