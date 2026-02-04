@@ -1,8 +1,13 @@
-/**
+/*
  * Author : Alexander Perlock + Ekaterina Uhalova
  * MACID : perlocka + uhalovae
  * Date Created : 04 02 26
  * Date Modified : 04 02 26
  * 
- * Resposnible for the creation of all DOM event listeners
+ * For left store element
  */
+
+#store {
+    order: 0;
+    width: 25%;
+}

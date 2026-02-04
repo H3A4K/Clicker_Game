@@ -1,0 +1,41 @@
+/*
+ * Author : Alexander Perlock + Ekaterina Uhalova
+ * MACID : perlocka + uhalovae
+ * Date Created : 04 02 26
+ * Date Modified : 04 02 26
+ * 
+ * Global format
+ */
+
+@import "./clicker.css";
+@import "./rewards.css";
+@import "./store.css";
+
+#content {
+    display: flex;
+}
+.title {
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
+
+/* Phone */
+@media (max-width:479px) {
+
+}
+
+/* Tablet */
+@media (min-width:480px) and (max-width:767px) {
+    
+}
+
+/* PC */
+@media (min-width:768px) {
+
+}
