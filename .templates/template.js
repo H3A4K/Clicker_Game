@@ -10,7 +10,7 @@
 /**
  * Function description
  * 
- * @param type input
+ * @param {type} input desc
  * 
- * @returns output
+ * @returns {type} output
  */
