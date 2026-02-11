@@ -21,6 +21,7 @@
     display: flex;
     height: 97vh;
     margin: 0.5%;
+    gap: 7px;
 }
 .title {
     width: 100%;
@@ -32,7 +33,11 @@
     background-color: var(--bg-color);
 }
 
-
+#scoreboard-values {
+    text-align: right;
+    padding: 5px;
+    list-style-type: none;
+}
 
 
 
@@ -49,4 +54,47 @@
 /* PC */
 @media (min-width:768px) {
 
+    body {
+        background-color: rgb(107, 55, 24);
+    }
+
+    #clicker,
+    #store, 
+    #rewards {
+        background-color: white;
+        border-radius: 10px;
+    
+    }
+
+    #store {
+        background-color: rgb(107, 55, 24);
+    }
+
+    /* #score {
+        color: red;
+        border-radius: 7px;
+    } */
+
+    .title {
+        /* background-color: rgba(158, 72, 22, 0.736); */
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        color: rgb(15, 103, 105);
+    }
+
+    .duck-title {
+        background-color: rgba(158, 72, 22, 0.736);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        color: yellow;
+        text-align: center;
+    }
+
+    #content {
+        padding: 5px;
+    }
+    #store li {
+        background-color: white;
+        border-radius: 7px;
+    }
 }
