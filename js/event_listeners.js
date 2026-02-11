@@ -13,14 +13,14 @@ clicker.addEventListener("click", function (event) {
     console.log(score);
 });
 
-const store_options = document.querySelectorAll("#store li");
-store_options.forEach(function (opt) {
-    opt.addEventListener("click", function (event) {
-        purchase(opt.id);
-        store_update(opt.id);
-        // inc_c_v(1);
-    }
-)});
+// const store_options = document.querySelectorAll("#store li");
+// store_options.forEach(function (opt) {
+//     opt.addEventListener("click", function (event) {
+//         purchase(opt.id);
+//         store_update(opt.id);
+//         // inc_c_v(1);
+//     }
+// )});
 
 
 window.addEventListener("load", function () {
