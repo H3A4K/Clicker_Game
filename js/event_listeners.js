@@ -24,5 +24,5 @@ store_options.forEach(function (opt) {
 
 
 window.addEventListener("load", function () {
-
+    store = new Store();
 })
