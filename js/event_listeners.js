@@ -2,13 +2,12 @@
  * Author : Alexander Perlock + Ekaterina Uhalova
  * MACID : perlocka + uhalovae
  * Date Created : 04 02 26
- * Date Modified : 04 02 26
+ * Date Modified : 11 02 26
  * 
  * Resposnible for the creation of all DOM event listeners
  */
 
-
-const clicker = document.getElementById("clicker");
+const clicker = document.getElementById("clickme");
 clicker.addEventListener("click", function (event) {
     a_click();
     console.log(score);
