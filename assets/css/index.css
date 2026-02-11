@@ -12,9 +12,15 @@
 @import "./rewards.css";
 @import "./store.css";
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 #content {
     display: flex;
     height: 97vh;
+    margin: 0.5%;
 }
 .title {
     width: 100%;

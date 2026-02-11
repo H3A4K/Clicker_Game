@@ -7,6 +7,7 @@
  * Resposnible for the creation of all DOM event listeners
  */
 
+
 const clicker = document.getElementById("clicker");
 clicker.addEventListener("click", function (event) {
     a_click();
@@ -16,7 +17,13 @@ clicker.addEventListener("click", function (event) {
 const store_options = document.querySelectorAll("#store li");
 store_options.forEach(function (opt) {
     opt.addEventListener("click", function (event) {
-        // purchase(opt.id)
-        inc_c_v(1);
+        purchase(opt.id);
+        store_update(opt.id);
+        // inc_c_v(1);
     }
 )});
+
+
+window.addEventListener("load", function () {
+
+})

@@ -6,11 +6,30 @@
  * 
  * For left store element
  */
-
 #store {
     order: 0;
-    width: 25%;
+     width: 25%;
+}
+
+#store, #rewards {
     height: 98vh;
     overflow-y: auto;
-    /* scrollbar-color: red orange; */
+}
+
+#store li {
+    padding: 0;
+    margin: 0;
+
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+    list-style-type: none;
+
+    border: 1px solid black;
+}
+
+#store li > .name {
+    text-align: center;
 }
