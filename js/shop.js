@@ -4,23 +4,28 @@
  * Date Created : 04 02 26
  * Date Modified : 11 02 26
  * 
- * Store
+ * Shop
  */
 
-class Store {
+class Shop {
     constructor() {
+        this.img_type = "png";
+
         this.upgrades = [
-            { ID: "mouse", cost: 5, desc: "" }
+            { ID: "mouse", cost: 5, desc: "", outcome: () => inc_click_value(0.1) }
         ];
 
         this.buildings = [
-            { ID: "cursor", cost: 10, base: 10, amount: 0, desc: "" }
+            { ID: "cursor", cost: 10, base: 10, amount: 0, desc: "", outcome: () => {/* increase bps */} }
         ];
 
         this.render();
         this.#event_listeners();
     }
 
+    /**
+     * Instantiates event listeners
+     */
     #event_listeners() {
         this.upgrades.forEach((up) => 
             document.getElementById(up.ID).addEventListener("click", () => {
@@ -33,13 +38,24 @@ class Store {
         }));
     }
 
+    /**
+     * Purchases the given upgrade
+     * 
+     * @param {upgrades} up the upgrade to be purchased 
+     */
     #purchase_up(up) {
         score -= up.cost;
         upgrades_count++;
 
+        // removes the element from being purchased again
         document.getElementById(up.ID).style.visibility = "hidden";
     }
 
+    /**
+     * Purchases the given building
+     * 
+     * @param {buildings} build the building to be purchased
+     */
     #purchase_build(build) {
         score -= build.cost;
         build.amount++;
@@ -48,36 +64,55 @@ class Store {
         this.update_item(build);
     }
 
-    #price_function(item) {
-        item.cost *= 0.1 + 1.01 * item.amount ^ 2
+    /**
+     * Increases the cost for the next purchase of a building
+     * 
+     * @param {buildings} building the building to increase the price of
+     */
+    #price_function(building) {
+        building.cost *= 0.1 + 1.01 * building.amount ^ 2
     }
 
+    /**
+     * Returns the total number of upgrades purchased
+     * 
+     * @returns {int} the number of upgrades
+     */
     number_upgrades() {
         let num = this.up_count;
         this.buildings.forEach((build) => num += build.amount);
         return num;
     }
 
+    /**
+     * Updates all of the building HTML elements
+     */
     update() {
-
+        this.buildings.forEach((building) => this.update_building(building));
     }
 
+    /**
+     * Updates the given building HTML element
+     * 
+     * @param {buildings} building the building to be updated
+     */
     update_building(building) {
-
-        // num_upgrades
-
-        // document.querySelector(`#${item_ID} .cost`).innerHTML = `Cost : ${price_function(num_upgrades)}`;
-        // document.querySelector(`#${item_ID} .amount`).innerHTML = `Amount : ${num_upgrades}`;
+        document.querySelector(`#${building.ID} .cost`).innerHTML = `Cost : ${building.cost}`;
+        document.querySelector(`#${building.ID} .amount`).innerHTML = `Amount : ${building.amount}`;
     }
 
+    /**
+     * Renders the upgrades and buildings onto their respective elements
+     */
     render() {
         upgrade_e = document.getElementById("upgrades");
         upgrade_e.innerHTML = ``;
         this.upgrades.forEach((up) => {
-            upgrade_e.innerHTML += `<li id=${up.ID}>
+            upgrade_e.innerHTML += `<input id=${up.ID}>
             <h1 class="name">${up.ID}</h1>
             <p class="desc">${up.desc}</p>
-            <div class="cost">Cost : ${up.cost}</div>`;
+            <div class="cost">Cost : ${up.cost}</div>
+            <img src="./assets/images/${up.ID}.${this.img_type}"></input>`;
         });
 
         buidling_e = document.getElementById("buildings");
@@ -86,8 +121,9 @@ class Store {
             buidling_e.innerHTML += `<input id=${build.ID} type="button">
             <h1 class="name">${build.ID}</h1>
             <p class="desc">${build.desc}</p>
-            <div class="cost">Cost : ${build.cost}</div></input>
-            <div class="amount>Amount : ${up.amount}</div>`;
+            <div class="cost">Cost : ${build.cost}</div>
+            <div class="amount>Amount : ${build.amount}</div>
+            <img src="./assets/images/${build.ID}.${this.img_type}"></input>`;
         });  
     }
 }
