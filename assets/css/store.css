@@ -16,7 +16,7 @@
     overflow-y: auto;
 }
 
-#store li {
+/* #store li {
     padding: 0;
     margin: 0;
 
@@ -31,5 +31,25 @@
 }
 
 #store li > .name {
+    text-align: center;
+} */
+
+#store button {
+    padding: 0;
+    margin: 0;
+
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+    list-style-type: none;
+
+    width: 100%;
+
+    border: 1px solid black;
+}
+
+#store button > .name {
     text-align: center;
 }

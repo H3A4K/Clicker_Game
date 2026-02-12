@@ -7,6 +7,8 @@
  * Resposnible for the creation of all DOM event listeners
  */
 
+// import {defaultEport as shop} from `./shop.js`;
+
 const clicker = document.getElementById("clickme");
 clicker.addEventListener("click", function (event) {
     a_click();
@@ -23,6 +25,14 @@ clicker.addEventListener("click", function (event) {
 // )});
 
 
-window.addEventListener("load", function () {
-    store = new Store();
+window.addEventListener("load", () => {
+    let local_shop = localStorage.shop
+    shop = new Shop( local_shop ? local_shop : null);
 })
+
+
+const t_save_ID = setInterval(() => {
+    shop.save();
+    // score.save();
+    // rewards.save();
+}, 60000); // saves once per minute

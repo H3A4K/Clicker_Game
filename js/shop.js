@@ -8,16 +8,22 @@
  */
 
 class Shop {
-    constructor() {
+    constructor(data) {
+        if (data) {
+            const DATA = JSON.parse(data);
+            this.upgrades = DATA.upgrades;
+            this.buildings = DATA.buildings;
+        } else {
+            this.upgrades = [
+                { ID: "mouse", cost: 5, desc: "", outcome: () => inc_click_value(0.1) }
+            ];
+
+            this.buildings = [
+                { ID: "cursor", cost: 10, base: 10, amount: 0, desc: "", outcome: () => {/* increase bps */} }
+            ];
+        }
+        
         this.img_type = "png";
-
-        this.upgrades = [
-            { ID: "mouse", cost: 5, desc: "", outcome: () => inc_click_value(0.1) }
-        ];
-
-        this.buildings = [
-            { ID: "cursor", cost: 10, base: 10, amount: 0, desc: "", outcome: () => {/* increase bps */} }
-        ];
 
         this.render();
         this.#event_listeners();
@@ -48,7 +54,10 @@ class Shop {
         upgrades_count++;
 
         // removes the element from being purchased again
-        document.getElementById(up.ID).style.visibility = "hidden";
+        document.getElementById(up.ID).style.display = "none";
+
+        console.log(up)
+        up.outcome();
     }
 
     /**
@@ -61,7 +70,9 @@ class Shop {
         build.amount++;
 
         this.#price_function(build);
-        this.update_item(build);
+        this.update_building(build);
+
+        build.outcome();
     }
 
     /**
@@ -105,28 +116,33 @@ class Shop {
      * Renders the upgrades and buildings onto their respective elements
      */
     render() {
-        upgrade_e = document.getElementById("upgrades");
+        let upgrade_e = document.getElementById("upgrades");
         upgrade_e.innerHTML = ``;
         this.upgrades.forEach((up) => {
-            upgrade_e.innerHTML += `<input id=${up.ID}>
+            upgrade_e.innerHTML += `<button id=${up.ID}>
             <h1 class="name">${up.ID}</h1>
             <p class="desc">${up.desc}</p>
             <div class="cost">Cost : ${up.cost}</div>
-            <img src="./assets/images/${up.ID}.${this.img_type}"></input>`;
+            <img src="./assets/images/${up.ID}.${this.img_type}"></button>`;
         });
 
-        buidling_e = document.getElementById("buildings");
+        let buidling_e = document.getElementById("buildings");
         buidling_e.innerHTML = ``;
         this.buildings.forEach((build) => {
-            buidling_e.innerHTML += `<input id=${build.ID} type="button">
-            <h1 class="name">${build.ID}</h1>
+            buidling_e.innerHTML += `<button id=${build.ID}>
+            <h1 class="name">${(build.ID)}</h1>
             <p class="desc">${build.desc}</p>
             <div class="cost">Cost : ${build.cost}</div>
-            <div class="amount>Amount : ${build.amount}</div>
-            <img src="./assets/images/${build.ID}.${this.img_type}"></input>`;
+            <div class="amount">Amount : ${build.amount}</div>
+            <img src="./assets/images/${build.ID}.${this.img_type}"></button>`;
         });  
     }
+
+    save() {
+        localStorage.shop = JSON.stringify(this);
+    }
 }
+// export default shop;
 
 // let store_items = [
 //     {name: "Cursor", value: 5}, 
