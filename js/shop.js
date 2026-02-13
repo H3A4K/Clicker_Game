@@ -52,7 +52,7 @@ class Shop {
      * @param {upgrades} up the upgrade to be purchased 
      */
     #purchase_up(up) {
-        score -= up.cost;
+        deduct_from_score(up.cost);
         upgrades_count++;
 
         // removes the element from being purchased again
@@ -68,7 +68,7 @@ class Shop {
      * @param {buildings} build the building to be purchased
      */
     #purchase_build(build) {
-        score -= build.cost;
+        deduct_from_score(build.cost);
         build.amount++;
 
         this.#price_function(build);
