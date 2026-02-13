@@ -9,19 +9,21 @@
 
 class Shop {
     constructor(data) {
-        if (data) {
-            const DATA = JSON.parse(data);
-            this.upgrades = DATA.upgrades;
-            this.buildings = DATA.buildings;
-        } else {
+        // commented out pulling from local storage for testing
+
+        // if (data) {
+        //     const DATA = JSON.parse(data);
+        //     this.upgrades = DATA.upgrades;
+        //     this.buildings = DATA.buildings;
+        // } else {
             this.upgrades = [
-                { ID: "mouse", cost: 5, desc: "", outcome: () => inc_click_value(0.1) }
+                { ID: "mouse", cost: 5, desc: "", out_factor: 0.1},
             ];
 
             this.buildings = [
-                { ID: "cursor", cost: 10, base: 10, amount: 0, desc: "", outcome: () => {/* increase bps */} }
+                { ID: "cursor", cost: 10, base: 10, amount: 0, desc: "", out_factor: 0.1 }
             ];
-        }
+        // }
         
         this.img_type = "png";
 
@@ -57,7 +59,7 @@ class Shop {
         document.getElementById(up.ID).style.display = "none";
 
         console.log(up)
-        up.outcome();
+        inc_click_value(up.out_factor);
     }
 
     /**
@@ -72,7 +74,7 @@ class Shop {
         this.#price_function(build);
         this.update_building(build);
 
-        build.outcome();
+        // increase_bps(build.out_factor); // TODO: Link w/ score.js
     }
 
     /**
@@ -81,7 +83,7 @@ class Shop {
      * @param {buildings} building the building to increase the price of
      */
     #price_function(building) {
-        building.cost *= 0.1 + 1.01 * building.amount ^ 2
+        building.cost = building.base * 1.15 ** (building.amount)
     }
 
     /**
