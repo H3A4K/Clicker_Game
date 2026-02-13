@@ -12,7 +12,7 @@
 const clicker = document.getElementById("clickme");
 clicker.addEventListener("click", function (event) {
     a_click();
-    console.log(score);
+    rewards.update();
 });
 
 // const store_options = document.querySelectorAll("#store li");
@@ -26,8 +26,11 @@ clicker.addEventListener("click", function (event) {
 
 
 window.addEventListener("load", () => {
-    let local_shop = localStorage.shop
-    shop = new Shop( local_shop ? local_shop : null);
+    let local_shop = localStorage.shop;
+    shop = new Shop( local_shop ? local_shop : null );
+
+    let local_rewards = localStorage.rewards;
+    rewards = new Achievements( local_rewards ? local_rewards : null );
 })
 
 

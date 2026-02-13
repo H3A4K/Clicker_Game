@@ -140,6 +140,9 @@ class Shop {
         });  
     }
 
+    /**
+     * Saves the elements of this object
+     */
     save() {
         localStorage.shop = JSON.stringify(this);
     }
