@@ -74,7 +74,7 @@ class Shop {
         this.#price_function(build);
         this.update_building(build);
 
-        // increase_bps(build.out_factor); // TODO: Link w/ score.js
+        inc_bps(build.out_factor);
     }
 
     /**
