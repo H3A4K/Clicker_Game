@@ -21,10 +21,10 @@ class Shop {
         ];
 
         this.buildings = [
-            { ID: "cursor", cost: 10, base: 10, amount: 0, desc: "", out_factor: 0.1 },
-            { ID: "Grandma?", cost: 100, base: 100, amount: 0, desc: "", out_factor: 1 },
-            { ID: "FAARM?", cost: 1250, base: 1250, amount: 0, desc: "", out_factor: 10 },
-            { ID: "A TEMPLE INIT? PERHAPS TO YTKA", cost: 15000, base: 15000, amount: 0, desc: "", out_factor: 100 },
+            { ID: "cursor", cost: 10, base: 10, amount: 0, desc: "Auto clicks", out_factor: 0.1 },
+            { ID: "Grandma?", cost: 100, base: 100, amount: 0, desc: "Tends to the ducks", out_factor: 1 },
+            { ID: "FAARM?", cost: 1250, base: 1250, amount: 0, desc: "Duck farm", out_factor: 10 },
+            { ID: "A TEMPLE INIT? PERHAPS TO YTKA", cost: 15000, base: 15000, amount: 0, desc: "ALL praise YTKA", out_factor: 100 },
 
         ];
         // }
