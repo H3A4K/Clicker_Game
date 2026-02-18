@@ -9,7 +9,7 @@
 
 // init
 let score = 0;
-let eps = 0;
+let bps = 0;
 let num_up = {
     mouse_up: 0,
     other: 0
@@ -45,6 +45,12 @@ function deduct_from_score(amount) {
     update_scoreboard();
 }
 
+function inc_bps(amount) {
+    // Nothing here yet
+}
+
+// is this recursive??
+// also, why is this?
 periodic_update();
 
 function periodic_update(){

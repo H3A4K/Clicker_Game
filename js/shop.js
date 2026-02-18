@@ -8,16 +8,24 @@
  */
 
 class Shop {
-    constructor() {
-        this.img_type = "png";
+    constructor(data) {
+        // commented out pulling from local storage for testing
 
+        // if (data) {
+        //     const DATA = JSON.parse(data);
+        //     this.upgrades = DATA.upgrades;
+        //     this.buildings = DATA.buildings;
+        // } else {
         this.upgrades = [
-            { ID: "mouse", cost: 5, desc: "", outcome: () => inc_click_value(0.1) }
+            { ID: "mouse", cost: 5, desc: "", out_factor: 0.1 },
         ];
 
         this.buildings = [
-            { ID: "cursor", cost: 10, base: 10, amount: 0, desc: "", outcome: () => {/* increase bps */} }
+            { ID: "cursor", cost: 10, base: 10, amount: 0, desc: "", out_factor: 0.1 }
         ];
+        // }
+
+        this.img_type = "png";
 
         this.render();
         this.#event_listeners();
@@ -27,42 +35,76 @@ class Shop {
      * Instantiates event listeners
      */
     #event_listeners() {
-        this.upgrades.forEach((up) => 
+        this.upgrades.forEach((up) =>
             document.getElementById(up.ID).addEventListener("click", () => {
-                this.#purchase_up(up);
-        }));
+                // this.#purchase_up(up);
+                this.#purchase(up, "upgrade");
+            }));
 
-        this.buildings.forEach((build) => 
+        this.buildings.forEach((build) =>
             document.getElementById(build.ID).addEventListener("click", () => {
-                this.#purchase_build(build);
-        }));
+                // this.#purchase_build(build);
+                this.#purchase(build, "building");
+            }));
     }
 
     /**
-     * Purchases the given upgrade
+     * Purchases the given item
      * 
-     * @param {upgrades} up the upgrade to be purchased 
+     * @param {upgrades || buildings} item the store item to be purchased 
+     * @param {String} type the type of the item, either upgrade or building
      */
-    #purchase_up(up) {
-        score -= up.cost;
-        upgrades_count++;
+    #purchase(item, type) {
+        if (score < item.cost) {
+            return;
+        }
+        deduct_from_score(item.cost);
+        switch (type) {
+            case "upgrade":
+                upgrades_count++;
+                document.getElementById(item.ID).style.display = "none";
+                inc_click_value(item.out_factor);
+                break;
 
-        // removes the element from being purchased again
-        document.getElementById(up.ID).style.visibility = "hidden";
+            case "building":
+                item.amount++;
+                this.#price_function(item);
+                this.update_building(item);
+                inc_bps(item.out_factor);
+                break;
+        }
     }
 
-    /**
-     * Purchases the given building
-     * 
-     * @param {buildings} build the building to be purchased
-     */
-    #purchase_build(build) {
-        score -= build.cost;
-        build.amount++;
+    // /**
+    //  * Purchases the given upgrade
+    //  * 
+    //  * @param {upgrades} up the upgrade to be purchased 
+    //  */
+    // #purchase_up(up) {
+    //     deduct_from_score(up.cost);
+    //     upgrades_count++;
 
-        this.#price_function(build);
-        this.update_item(build);
-    }
+    //     // removes the element from being purchased again
+    //     document.getElementById(up.ID).style.display = "none";
+
+    //     // console.log(up)
+    //     inc_click_value(up.out_factor);
+    // }
+
+    // /**
+    //  * Purchases the given building
+    //  * 
+    //  * @param {buildings} build the building to be purchased
+    //  */
+    // #purchase_build(build) {
+    //     deduct_from_score(build.cost);
+    //     build.amount++;
+
+    //     this.#price_function(build);
+    //     this.update_building(build);
+
+    //     inc_bps(build.out_factor);
+    // }
 
     /**
      * Increases the cost for the next purchase of a building
@@ -70,7 +112,7 @@ class Shop {
      * @param {buildings} building the building to increase the price of
      */
     #price_function(building) {
-        building.cost *= 0.1 + 1.01 * building.amount ^ 2
+        building.cost = Math.round(building.base * 1.15 ** (building.amount) * 100) / 100
     }
 
     /**
@@ -105,33 +147,41 @@ class Shop {
      * Renders the upgrades and buildings onto their respective elements
      */
     render() {
-        upgrade_e = document.getElementById("upgrades");
+        let upgrade_e = document.getElementById("upgrades");
         upgrade_e.innerHTML = ``;
         this.upgrades.forEach((up) => {
-            upgrade_e.innerHTML += `<input id=${up.ID}>
+            upgrade_e.innerHTML += `<button id=${up.ID}>
             <h1 class="name">${up.ID}</h1>
             <p class="desc">${up.desc}</p>
             <div class="cost">Cost : ${up.cost}</div>
-            <img src="./assets/images/${up.ID}.${this.img_type}"></input>`;
+            <img src="./assets/images/${up.ID}.${this.img_type}"></button>`;
         });
 
-        buidling_e = document.getElementById("buildings");
+        let buidling_e = document.getElementById("buildings");
         buidling_e.innerHTML = ``;
         this.buildings.forEach((build) => {
-            buidling_e.innerHTML += `<input id=${build.ID} type="button">
-            <h1 class="name">${build.ID}</h1>
+            buidling_e.innerHTML += `<button id=${build.ID}>
+            <h1 class="name">${(build.ID)}</h1>
             <p class="desc">${build.desc}</p>
             <div class="cost">Cost : ${build.cost}</div>
-            <div class="amount>Amount : ${build.amount}</div>
-            <img src="./assets/images/${build.ID}.${this.img_type}"></input>`;
-        });  
+            <div class="amount">Amount : ${build.amount}</div>
+            <img src="./assets/images/${build.ID}.${this.img_type}"></button>`;
+        });
+    }
+
+    /**
+     * Saves the elements of this object
+     */
+    save() {
+        localStorage.shop = JSON.stringify(this);
     }
 }
+// export default shop;
 
 // let store_items = [
-//     {name: "Cursor", value: 5}, 
+//     {name: "Cursor", value: 5},
 //     {name: "Grandma", value: 20},
-//     {name: "Farm", value: 50},  
+//     {name: "Farm", value: 50},
 // ];
 
 // function populate_store() {
