@@ -61,13 +61,17 @@
     #clicker,
     #store, 
     #rewards {
-        background-color: white;
+        /* background-color: white; */
         border-radius: 10px;
     
     }
 
     #store {
         background-color: rgb(107, 55, 24);
+    }
+
+    #score {
+        /* background-color: rgba(173, 216, 231, 0.837); */
     }
 
     /* #score {

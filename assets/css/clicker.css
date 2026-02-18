@@ -11,16 +11,19 @@
     order: 1;
     width: 50%;
     border: 1px solid black;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    background-color:  rgb(177, 203, 213);
+}
     
 
-}
+
 
 #clickme {
     /* border: 1px solid blue; */
     height: 70%;
-    margin-top: 70px;
+    padding-top: 70px;
     display: flex;
     justify-content: center;
-    background-color: rgba(173, 216, 231, 0.837);
+    /* background-color: rgba(173, 216, 231, 0.837); */
 }
 
