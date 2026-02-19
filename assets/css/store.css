@@ -14,6 +14,12 @@
 #store, #rewards {
     height: 98vh;
     overflow-y: auto;
+    display: flex;    
+    flex-direction: column;
+}
+
+.store-item {
+    flex: 1;
 }
 
 /* #store li {

@@ -18,8 +18,8 @@ let click_val = 1;
 let upgrades_count = 0;
 
 function update_scoreboard() {
-    document.getElementById("score_value").innerText = score;
-    document.getElementById("click_value").innerText = click_val;
+    document.getElementById("score_value").innerText = score.toFixed(2);
+    document.getElementById("click_value").innerText = click_val.toFixed(2);
     document.getElementById("upgrades_value").innerText = upgrades_count;
 }
 
@@ -34,10 +34,13 @@ function a_click() {
 
 function inc_click_value(amount) {
     click_val += amount;
-    upgrades_count++;
     // document.getElementById("click_value").innerText = click_val;
     // document.getElementById("upgrades_value").innerText = upgrades_count;
     update_scoreboard();
+}
+
+function inc_upgrade_count(amount) {
+    upgrades_count += amount;
 }
 
 function deduct_from_score(amount) {
@@ -46,7 +49,7 @@ function deduct_from_score(amount) {
 }
 
 function inc_bps(amount) {
-    // Nothing here yet
+    bps += amount;
 }
 
 // is this recursive??
@@ -54,11 +57,13 @@ function inc_bps(amount) {
 periodic_update();
 
 function periodic_update(){
-    setTimeout(do_periodic_logic, 3000);
+    setTimeout(do_periodic_logic, 1000);
 }
 
 function do_periodic_logic() {
     // deduct_from_score(10);
+    score += bps;
+    update_scoreboard();
     periodic_update();
 
 }

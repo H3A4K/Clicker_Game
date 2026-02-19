@@ -65,9 +65,9 @@ class Shop {
         deduct_from_score(item.cost);
         switch (type) {
             case "upgrade":
-                upgrades_count++;
-                document.getElementById(item.ID).style.display = "none";
+                //document.getElementById(item.ID).style.display = "none";
                 inc_click_value(item.out_factor);
+                inc_upgrade_count(1);
                 break;
 
             case "building":
@@ -75,6 +75,7 @@ class Shop {
                 this.#price_function(item);
                 this.update_building(item);
                 inc_bps(item.out_factor);
+                inc_upgrade_count(1);
                 break;
         }
     }

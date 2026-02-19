@@ -20,7 +20,10 @@
     height: 70%;
     padding-top: 70px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     /* background-color: rgba(173, 216, 231, 0.837); */
+
 }
+
 
