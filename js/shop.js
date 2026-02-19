@@ -43,13 +43,14 @@ class Shop {
             document.getElementById(up.ID).addEventListener("click", () => {
                 // this.#purchase_up(up);
                 this.#purchase(up, "upgrade");
-            }));
+        }));
 
-        this.buildings.forEach((build) =>
+        this.buildings.forEach((build) => {
+            console.log(build);
             document.getElementById(build.ID).addEventListener("click", () => {
                 // this.#purchase_build(build);
                 this.#purchase(build, "building");
-            }));
+        })});
     }
 
     /**
@@ -77,6 +78,7 @@ class Shop {
                 inc_bps(item.out_factor);
                 break;
         }
+        rewards.update();
     }
 
     // /**
@@ -164,7 +166,7 @@ class Shop {
         let buidling_e = document.getElementById("buildings");
         buidling_e.innerHTML = ``;
         this.buildings.forEach((build) => {
-            buidling_e.innerHTML += `<button id=${build.ID}>
+            buidling_e.innerHTML += `<button id="${build.ID}">
             <h1 class="name">${(build.ID)}</h1>
             <p class="desc">${build.desc}</p>
             <div class="cost">Cost : ${build.cost}</div>
@@ -180,43 +182,3 @@ class Shop {
         localStorage.shop = JSON.stringify(this);
     }
 }
-// export default shop;
-
-// let store_items = [
-//     {name: "Cursor", value: 5},
-//     {name: "Grandma", value: 20},
-//     {name: "Farm", value: 50},
-// ];
-
-// function populate_store() {
-//     store_items.forEach(function (store_item) {
-
-//     });
-// }
-
-// function purchase(eleID) {
-//     switch (eleID) {
-//         case "mouse_up":
-//             inc_c_v(0.1);
-//             num_up.mouse_up += 1;
-//             break;
-
-//         case "":
-
-//             break;
-
-//         default: break;
-//     }
-// }
-
-// function price_function(x) {
-//     return 10 * (x + 1);
-// }
-
-// function update_store() {
-//     id_string = "#" + String(eleID);
-//         num_upgrades = num_up[eleID];
-
-//         document.querySelector(`${id_string} .cost`).innerHTML = `Cost : ${price_function(num_upgrades)}`;
-//         document.querySelector(`${id_string} .amount`).innerHTML = `Amount : ${num_upgrades}`;
-// }
