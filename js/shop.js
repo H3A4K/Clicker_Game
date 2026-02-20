@@ -155,23 +155,66 @@ class Shop {
     render() {
         let upgrade_e = document.getElementById("upgrades");
         upgrade_e.innerHTML = ``;
-        this.upgrades.forEach((up) => {
-            upgrade_e.innerHTML += `<button id=${up.ID}>
-            <h1 class="name">${up.ID}</h1>
-            <p class="desc">${up.desc}</p>
-            <div class="cost">Cost : ${up.cost}</div>
-            <img src="./assets/images/${up.ID}.${this.img_type}"></button>`;
+        this.upgrades.forEach((up) => {            
+            const button = document.createElement("button");
+            button.id = up.ID;
+            
+            const name = document.createElement("h1");
+            name.classList.add("name");
+            name.innerHTML = up.ID;
+
+            const desc = document.createElement("p");
+            desc.classList.add("desc");
+            desc.innerHTML = up.desc;
+
+            const cost = document.createElement("div");
+            cost.classList.add("cost");
+            cost.innerHTML = `Cost : ${up.cost}`; 
+
+            const ico = document.createElement("img");
+            ico.setAttribute("src", `./assets/images/${up.ID}.${this.img_type}`);
+
+            button.appendChild(name);
+            button.appendChild(desc);
+            button.appendChild(cost);
+            button.appendChild(ico);
+
+            upgrade_e.appendChild(button);
+            
         });
 
-        let buidling_e = document.getElementById("buildings");
-        buidling_e.innerHTML = ``;
+        let building_e = document.getElementById("buildings");
+        building_e.innerHTML = ``;
         this.buildings.forEach((build) => {
-            buidling_e.innerHTML += `<button id="${build.ID}">
-            <h1 class="name">${(build.ID)}</h1>
-            <p class="desc">${build.desc}</p>
-            <div class="cost">Cost : ${build.cost}</div>
-            <div class="amount">Amount : ${build.amount}</div>
-            <img src="./assets/images/${build.ID}.${this.img_type}"></button>`;
+            const button = document.createElement("button");
+            button.id = build.ID;
+            
+            const name = document.createElement("h1");
+            name.classList.add("name");
+            name.innerHTML = build.ID;
+
+            const desc = document.createElement("p");
+            desc.classList.add("desc");
+            desc.innerHTML = build.desc;
+
+            const cost = document.createElement("div");
+            cost.classList.add("cost");
+            cost.innerHTML = `Cost : ${build.cost}`; 
+            
+            const amount = document.createElement("div");
+            amount.classList.add("amount");
+            amount.innerHTML = `Amount : ${build.amount}`; 
+
+            const ico = document.createElement("img");
+            ico.setAttribute("src", `./assets/images/${build.ID}.${this.img_type}`);
+
+            button.appendChild(name);
+            button.appendChild(desc);
+            button.appendChild(cost);
+            button.appendChild(amount);
+            button.appendChild(ico);
+
+            building_e.appendChild(button);
         });
     }
 

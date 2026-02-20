@@ -53,3 +53,7 @@
 #store button > .name {
     text-align: center;
 }
+
+#store > div:last-child {
+    border-top: 1px solid black;
+}
