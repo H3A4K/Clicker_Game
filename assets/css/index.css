@@ -67,7 +67,7 @@
     }
 
     #store {
-        background-color: rgb(107, 55, 24);
+        background-color: #b58e62;
     }
 
     /* #score {
@@ -84,14 +84,19 @@
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         color: rgb(15, 103, 105);
+        font-family:fantasy;
+        font-size: xx-large;
+        
     }
 
     .duck-title {
-        background-color: rgba(158, 72, 22, 0.736);
+        /* background-color: rgba(158, 72, 22, 0.736); */
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        color: yellow;
+        color: rgb(255, 230, 3);
         text-align: center;
+        font-size: xxx-large;
+        font-family:fantasy;
     }
 
     #content {
@@ -101,4 +106,11 @@
         background-color: white;
         border-radius: 7px;
     }
+
+    #buildings, #upgrades {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
 }
+

@@ -11,7 +11,7 @@
     order: 1;
     width: 50%;
     border: 1px solid black;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    
     background-color:  rgb(177, 203, 213);
 }
 
@@ -20,7 +20,12 @@
     height: 70%;
     padding-top: 70px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     /* background-color: rgba(173, 216, 231, 0.837); */
+
 }
 
+#clickme:hover {
+    /* width: 110%; */
+}
