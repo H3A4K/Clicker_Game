@@ -2,7 +2,7 @@
  * Author : Alexander Perlock + Ekaterina Uhalova
  * MACID : perlocka + uhalovae
  * Date Created : 04 02 26
- * Date Modified : 18 02 26
+ * Date Modified : 19 02 26
  * 
  * Shop
  */
@@ -17,14 +17,14 @@ class Shop {
         //     this.buildings = DATA.buildings;
         // } else {
         this.upgrades = [
-            { ID: "mouse", cost: 5, desc: "", out_factor: 0.1 },
+            { ID: "Mouse", cost: 5, desc: "", out_factor: 0.1 },
         ];
 
         this.buildings = [
-            { ID: "cursor", cost: 10, base: 10, amount: 0, desc: "Auto clicks", out_factor: 0.1 },
-            { ID: "Grandma?", cost: 100, base: 100, amount: 0, desc: "Tends to the ducks", out_factor: 1 },
-            { ID: "FAARM?", cost: 1250, base: 1250, amount: 0, desc: "Duck farm", out_factor: 10 },
-            { ID: "A TEMPLE INIT? PERHAPS TO YTKA", cost: 15000, base: 15000, amount: 0, desc: "ALL praise YTKA", out_factor: 100 },
+            { ID: "Cursor", cost: 10, base: 10, amount: 0, desc: "Auto clicks", out_factor: 0.1 },
+            { ID: "Grandma", cost: 100, base: 100, amount: 0, desc: "Tends to the ducks", out_factor: 1 },
+            { ID: "Farm", cost: 1250, base: 1250, amount: 0, desc: "Duck farm", out_factor: 10 },
+            { ID: "Temple", cost: 15000, base: 15000, amount: 0, desc: "ALL praise YTKA", out_factor: 100 },
 
         ];
         // }
@@ -157,7 +157,7 @@ class Shop {
         let upgrade_e = document.getElementById("upgrades");
         upgrade_e.innerHTML = ``;
         this.upgrades.forEach((up) => {
-            upgrade_e.innerHTML += `<button id=${up.ID}>
+            upgrade_e.innerHTML += `<button id="${up.ID}" class="store-item">
             <h1 class="name">${up.ID}</h1>
             <p class="desc">${up.desc}</p>
             <div class="cost">Cost : ${up.cost}</div>
@@ -167,7 +167,7 @@ class Shop {
         let buidling_e = document.getElementById("buildings");
         buidling_e.innerHTML = ``;
         this.buildings.forEach((build) => {
-            buidling_e.innerHTML += `<button id="${build.ID}">
+            buidling_e.innerHTML += `<button id="${build.ID}" class="store-item">
             <h1 class="name">${(build.ID)}</h1>
             <p class="desc">${build.desc}</p>
             <div class="cost">Cost : ${build.cost}</div>

@@ -57,7 +57,7 @@ function inc_bps(amount) {
 periodic_update();
 
 function periodic_update(){
-    setTimeout(do_periodic_logic, 4000);
+    setTimeout(do_periodic_logic, 2000);
 }
 
 function do_periodic_logic() {

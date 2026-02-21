@@ -2,15 +2,21 @@
  * Author : Alexander Perlock + Ekaterina Uhalova
  * MACID : perlocka + uhalovae
  * Date Created : 04 02 26
- * Date Modified : 04 02 26
+ * Date Modified : 19 02 26
  * 
  * For right rewards element
  */
 
 #rewards {
     order: 2;
-    width: 25%;
+    /* width: 25%; */
     background-color: #b58e62;
+    /* height: 98vh; */
+    overflow-y: auto;
+    border-radius: 10px;
+    /* display: flex;     */
+    /* flex-direction: column; */
+     flex: 1;
 
 }
 

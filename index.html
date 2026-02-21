@@ -4,7 +4,7 @@ Author : Alexander Perlock + Ekaterina Uhalova
 MACID : perlocka + uhalovae
 
 Date Created     : 04 02 26
-Date Modified    : 11 02 26
+Date Modified    : 19 02 26
 
 What page is for
 -->
@@ -21,6 +21,7 @@ What page is for
     <script src="./js/score.js"></script>
     <script src="./js/shop.js"></script>
     <script src="./js/rewards.js"></script>
+    <script src="./js/clicker.js"></script>
 
     <script defer src="./js/event_listeners.js"></script>
 
@@ -29,26 +30,28 @@ What page is for
 <body>
     
     <div id="content">        
-        <div id="clicker">
-            <div class="duck-title">Duck Clicker</div>
-            <div id="score">
-                <h4>Scoreboard</h4>
-                <ul id="scoreboard-values">
-                    <li>Score: <span id="score_value"></span> </li>
-                    <li>Click value: <span id="click_value"></span></li>
-                    <li>Upgrades in play: <span id="upgrades_value"></span></li>
-                </ul>
-            </div>
-            <div id="clickme">
-                <img src="./assets/images/duck.png">
-            </div>
-
-        </div>
         <div id="store">
             <div class="title">Store</div>
             <div id="upgrades"></div>
             <div id="buildings"></div>
         </div>
+
+        <div id="clicker">
+            <div class="duck-title">Duck Clicker</div>
+            <div id="score">
+                <!-- <h4>Scoreboard</h4> -->
+                <ul id="scoreboard-values">
+                    
+                    <li> <img src="./assets/images/bubble.png" width="30px"> <span id="score_value"></span> </li>
+                    <li>Click value: <span id="click_value"></span></li>
+                    <li>Upgrades in play: <span id="upgrades_value"></span></li>
+                </ul>
+            </div>
+            <div id="clickme">
+                <img src="./assets/images/duck.png" alt="Clickable image" id="clickImage" class="base-img">
+            </div>
+        </div>
+
         <div id="rewards">
             <div class="title">Rewards</div>
             <div id="elements"></div>
