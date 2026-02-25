@@ -76,7 +76,6 @@ class Shop {
                 document.getElementById(item.ID).style.display = "none";
                 item.shown = false;
                 inc_click_value(item.out_factor);
-                inc_upgrade_count(1);
                 break;
 
             case "building":
@@ -84,7 +83,6 @@ class Shop {
                 this.#price_function(item);
                 this.update_building(item);
                 inc_bps(item.out_factor);
-                inc_upgrade_count(1);
                 break;
         }
         rewards.update();
