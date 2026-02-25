@@ -17,7 +17,7 @@ class Shop {
             this.buildings = DATA.buildings;
         } else {
             this.upgrades = [
-                { ID: "Mouse", cost: 5, desc: "", out_factor: 0.1, shown: true },
+                { ID: "Mouse", cost: 500, desc: "", out_factor: 2, shown: true },
             ];
 
             this.buildings = [
@@ -36,7 +36,6 @@ class Shop {
 
         this.upgrades.forEach((item) => {
             if (!item.shown) {
-                console.log(item.ID);
                 document.getElementById(item.ID).style.display = "none";
             }
         });
