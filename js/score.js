@@ -11,12 +11,10 @@
 let score = 0;
 let bps = 0;
 let click_val = 1;
-let upgrades_count = 0;
 
 function update_scoreboard() {
     document.getElementById("score_value").innerText = score.toFixed(2);
     document.getElementById("click_value").innerText = click_val.toFixed(2);
-    document.getElementById("upgrades_value").innerText = upgrades_count;
 }
 
 /**
@@ -33,10 +31,6 @@ function inc_click_value(amount) {
     // document.getElementById("click_value").innerText = click_val;
     // document.getElementById("upgrades_value").innerText = upgrades_count;
     update_scoreboard();
-}
-
-function inc_upgrade_count(amount) {
-    upgrades_count += amount;
 }
 
 function deduct_from_score(amount) {
