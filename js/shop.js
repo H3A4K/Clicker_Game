@@ -17,7 +17,7 @@ class Shop {
             this.buildings = DATA.buildings;
         } else {
             this.upgrades = [
-                { ID: "Mouse", cost: 500, desc: "", out_factor: 2, shown: true },
+                { ID: "Mouse", cost: 500, desc: "", out_factor: 1, shown: true },
             ];
 
             this.buildings = [
