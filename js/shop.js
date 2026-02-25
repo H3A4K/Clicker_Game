@@ -17,7 +17,7 @@ class Shop {
         //     this.buildings = DATA.buildings;
         // } else {
         this.upgrades = [
-            { ID: "Mouse", cost: 5, desc: "", out_factor: 0.1 },
+            { ID: "Mouse", cost: 5, desc: "", out_factor: 0.1, outcome: () => {} },
         ];
 
         this.buildings = [
@@ -66,7 +66,7 @@ class Shop {
         deduct_from_score(item.cost);
         switch (type) {
             case "upgrade":
-                //document.getElementById(item.ID).style.display = "none";
+                document.getElementById(item.ID).style.display = "none";
                 inc_click_value(item.out_factor);
                 inc_upgrade_count(1);
                 break;

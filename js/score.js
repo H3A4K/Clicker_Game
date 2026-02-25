@@ -52,18 +52,9 @@ function inc_bps(amount) {
     bps += amount;
 }
 
-// is this recursive??
-// also, why is this?
-periodic_update();
-
-function periodic_update(){
-    setTimeout(do_periodic_logic, 2000);
-}
-
 function do_periodic_logic() {
-    // deduct_from_score(10);
     score += bps;
     update_scoreboard();
-    periodic_update();
-
 }
+
+setInterval(do_periodic_logic, 2000);
