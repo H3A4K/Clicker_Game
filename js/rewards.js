@@ -18,19 +18,24 @@ class Achievements {
         // commented out pulling from local storage for testing
 
         // if (data) {
-        //     // Init from local data
-        // }  else {
-            this.rewards = [
-                // { name: "name", desc: "description", successor: "name of reward in unavailable (successors) array that is now achievable", requirement: () => what needs to happen to get this achievement }
-                { name: "First-Bubbles", desc: "Aquire 1 bubble", requirement: () => score >= 1, successor: "Ten-Bubbles" }, 
-                { name: "Cursors", desc: "Aquire 1 cursor", requirement: () => shop.buildings[0].amount >= 1, successor: "Clicking Are We?" }
-            ]
-            this.unavailable = [
-                { name: "Ten-Bubbles", desc: "Aquire 10 bubbles", requirement: () => score >= 10, successor: null },
-                { name: "Clicking Are We?", desc: "Aquire 10 cursor", requirement: () => shop.buildings[0].amount >= 10, successor: null },
-            ];
-            this.achieved = [];
+        //     const DATA = JSON.parse(data);
+        //     this.rewards = DATA.rewards;
+        //     this.unavailable = DATA.unavailable;        
+        //     this.achieved = DATA.achieved;        
+        // } else {
+        this.rewards = [
+            // { name: "name", desc: "description", successor: "name of reward in unavailable (successors) array that is now achievable", requirement: () => what needs to happen to get this achievement }
+            { name: "First-Bubbles", desc: "Aquire 1 bubble", requirement: () => score >= 1, successor: "Ten-Bubbles" }, 
+            { name: "Cursors", desc: "Aquire 1 cursor", requirement: () => shop.buildings[0].amount >= 1, successor: "Clicking Are We?" }
+        ]
+        this.unavailable = [
+            { name: "Ten-Bubbles", desc: "Aquire 10 bubbles", requirement: () => score >= 10, successor: null },
+            { name: "Clicking Are We?", desc: "Aquire 10 cursor", requirement: () => shop.buildings[0].amount >= 10, successor: null },
+        ];
+        this.achieved = [];
         // }
+
+        this.update();
 
 
         this.img_type = "png";

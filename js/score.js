@@ -10,10 +10,6 @@
 // init
 let score = 0;
 let bps = 0;
-let num_up = {
-    mouse_up: 0,
-    other: 0
-};
 let click_val = 1;
 let upgrades_count = 0;
 
@@ -58,3 +54,25 @@ function do_periodic_logic() {
 }
 
 setInterval(do_periodic_logic, 2000);
+
+function score_save() {
+    localStorage.score = JSON.stringify(
+        {
+            score: score,
+            bps: bps,
+            click_val: click_val,
+
+        }
+    )
+}
+
+function score_load() {
+    let local = localStorage.score;
+    if (local) {
+        local = JSON.parse(local);
+        score = local.score;
+        bps = local.bps;
+        click_val = local.click_val;
+    }
+    update_scoreboard();
+}

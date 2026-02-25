@@ -11,28 +11,35 @@ class Shop {
     constructor(data) {
         // commented out pulling from local storage for testing
 
-        // if (data) {
-        //     const DATA = JSON.parse(data);
-        //     this.upgrades = DATA.upgrades;
-        //     this.buildings = DATA.buildings;
-        // } else {
-        this.upgrades = [
-            { ID: "Mouse", cost: 5, desc: "", out_factor: 0.1, outcome: () => {} },
-        ];
+        if (data) {
+            const DATA = JSON.parse(data);
+            this.upgrades = DATA.upgrades;
+            this.buildings = DATA.buildings;
+        } else {
+            this.upgrades = [
+                { ID: "Mouse", cost: 5, desc: "", out_factor: 0.1, shown: true },
+            ];
 
-        this.buildings = [
-            { ID: "Cursor", cost: 10, base: 10, amount: 0, desc: "Auto clicks", out_factor: 0.1 },
-            { ID: "Grandma", cost: 100, base: 100, amount: 0, desc: "Tends to the ducks", out_factor: 1 },
-            { ID: "Farm", cost: 1250, base: 1250, amount: 0, desc: "Duck farm", out_factor: 10 },
-            { ID: "Temple", cost: 15000, base: 15000, amount: 0, desc: "ALL praise YTKA", out_factor: 100 },
+            this.buildings = [
+                { ID: "Cursor", cost: 10, base: 10, amount: 0, desc: "Auto clicks", out_factor: 0.1 },
+                { ID: "Grandma", cost: 100, base: 100, amount: 0, desc: "Tends to the ducks", out_factor: 1 },
+                { ID: "Farm", cost: 1250, base: 1250, amount: 0, desc: "Duck farm", out_factor: 10 },
+                { ID: "Temple", cost: 15000, base: 15000, amount: 0, desc: "ALL praise YTKA", out_factor: 100 },
 
-        ];
-        // }
+            ];
+        }
 
         this.img_type = "png";
 
         this.render();
         this.#event_listeners();
+
+        this.upgrades.forEach((item) => {
+            if (!item.shown) {
+                console.log(item.ID);
+                document.getElementById(item.ID).style.display = "none";
+            }
+        });
     }
 
     /**
@@ -46,7 +53,7 @@ class Shop {
         }));
 
         this.buildings.forEach((build) => {
-            console.log(build);
+            // console.log(build);
             document.getElementById(build.ID).addEventListener("click", () => {
                 // this.#purchase_build(build);
                 this.#purchase(build, "building");
@@ -67,6 +74,7 @@ class Shop {
         switch (type) {
             case "upgrade":
                 document.getElementById(item.ID).style.display = "none";
+                item.shown = false;
                 inc_click_value(item.out_factor);
                 inc_upgrade_count(1);
                 break;
