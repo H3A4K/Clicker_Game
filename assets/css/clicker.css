@@ -54,8 +54,9 @@
     text-align: center;
     padding-top: 40px;
     list-style-type: none;
-    font-size: larger;
+    font-size: x-large;
     font-weight: bold;
+    color: rgb(215, 215, 215);
 }
 
 .base-img {

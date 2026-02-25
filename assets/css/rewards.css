@@ -16,7 +16,10 @@
     border-radius: 10px;
     /* display: flex;     */
     /* flex-direction: column; */
-     flex: 1;
-
+    flex: 1;
+    color: black;
+    padding: 5px;
 }
+
+
 
