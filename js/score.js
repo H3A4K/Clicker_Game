@@ -13,8 +13,9 @@ let bps = 0;
 let click_val = 1;
 
 function update_scoreboard() {
-    document.getElementById("score_value").innerText = score.toFixed(2);
-    document.getElementById("click_value").innerText = click_val.toFixed(2);
+    document.getElementById("score_value").innerText = score.toFixed(1);
+    document.getElementById("click_value").innerText = click_val.toFixed(1);
+    document.getElementById("bps").innerText = bps.toFixed(1);
 }
 
 /**
@@ -47,7 +48,7 @@ function do_periodic_logic() {
     update_scoreboard();
 }
 
-setInterval(do_periodic_logic, 2000);
+setInterval(do_periodic_logic, 1000);
 
 function score_save() {
     localStorage.score = JSON.stringify(
