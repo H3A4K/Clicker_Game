@@ -52,11 +52,12 @@ class Achievements {
         name.innerHTML = reward.name;
         const desc = document.createElement("p");
         desc.innerHTML = reward.desc;
-        const img = document.createElement("img");
-        img.setAttribute("src", `${reward.name}.${this.img_type}`)
+        // const img = document.createElement("img");
+        // img.setAttribute("src", `${reward.name}.${this.img_type}`)
 
         li.appendChild(name);
         li.appendChild(desc);
+        // li.appendChild(img);
 
         return li
     }
