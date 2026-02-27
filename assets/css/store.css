@@ -79,6 +79,8 @@
 #store button {
     text-align: center;
     /* background-color: rgba(177, 203, 213, 0.733); */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: large;
 }
 
 button:hover  {
